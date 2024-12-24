@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Coming Soon - Your Startup</title>
+    <title>Coming Soon - fluxanalytics</title>
     <style>
         /* Global Reset */
         * {
@@ -61,6 +61,27 @@
             z-index: 0;
         }
 
+        /* Button Styling */
+        .about-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #090301;
+            color: #695b5b;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            z-index: 1; /* Ensure it stays above the overlay */
+        }
+
+        .about-button:hover {
+            /* background-color: #701a66; */
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .coming-soon-text {
                 font-size: 10px;
@@ -80,6 +101,7 @@
         <!-- <div class="coming-soon-text">
             <p>Coming Soon</p>
         </div> -->
+        <a href="about.html" class="about-button">Know About Us</a>
     </div>
 
 </body>
