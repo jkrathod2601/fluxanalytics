@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,8 +17,9 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
-        body, html {
+
+        body,
+        html {
             height: 100%;
             font-family: Arial, sans-serif;
             display: flex;
@@ -25,17 +27,15 @@
             align-items: center;
             color: #fff;
             overflow: hidden;
-            /* Dark background with SVG */
             background-color: #000000;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg fill-opacity='0.42'%3E%3Ccircle fill='%23000000' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%2314081c' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%231c0b28' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%23230e31' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%23281038' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%232D123F' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
             background-size: cover;
         }
 
-        /* Container Styles */
         .container {
             text-align: left;
-            z-index: 1; /* Ensure it stays above the background */
+            z-index: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -44,7 +44,6 @@
             padding: 20px;
         }
 
-        /* About Us Text */
         .about-us-text {
             font-size: 2rem;
             font-weight: bold;
@@ -79,29 +78,41 @@
         }
 
         .service-item {
-            background-color: rgba(0, 0, 0, 0.996); /* Transparent background */
+            background-color: rgba(0, 0, 0, 0.996);
             padding: 20px;
             border-radius: 10px;
             width: 25%;
             text-align: center;
-            box-shadow: 0 4px 12px rgb(0, 0, 0); /* Soft shadow effect */
+            box-shadow: 0 4px 12px rgb(0, 0, 0);
             color: #fff;
             font-family: 'Montserrat', sans-serif;
             font-size: 1.2rem;
             transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-            backdrop-filter: blur(5px); /* Frosted glass effect */
+            backdrop-filter: blur(5px);
             opacity: 0;
             animation: fadeInUp 0.5s ease forwards;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .service-item img {
+            width: 100%;
+            height: 80px;
+            object-fit: contain;
+            max-width: 150px; /* Limit max width of the images */
+            background-color: white;
         }
 
         .service-item:hover {
             transform: scale(1.1);
-            background-color: rgba(35, 45, 63, 0.8); /* Solid background on hover */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Increased shadow */
+            background-color: rgba(35, 45, 63, 0.8);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
         }
 
-        /* Info box visibility */
         .service-info {
             display: none;
             margin-top: 10px;
@@ -122,13 +133,13 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* Button Styling */
         .about-button {
             position: absolute;
             bottom: 20px;
@@ -142,7 +153,7 @@
             max-width: 800px;
             font-size: 1rem;
             text-decoration: none;
-            z-index: 1; /* Ensure it stays above the overlay */
+            z-index: 1;
         }
 
         .about-button:hover {
@@ -151,23 +162,41 @@
 
         @media (max-width: 768px) {
             .about-us-text {
-                 font-size: 1rem;
-                 color: whitesmoke;
+                font-size: 1rem;
+                color: whitesmoke;
             }
+
             .services-section h2 {
                 font-size: 1.5rem;
             }
+
             .service-item {
                 width: 100%;
                 font-size: 1rem;
+                text-align: center;
+                padding: 10px;
+            }
+
+            .service-item img {
+                width: 80%; /* Set width to a percentage of the container */
+                height: auto; /* Auto adjust height to preserve aspect ratio */
+                max-width: 120px; /* Set maximum width */
+                background-color: white;
             }
         }
 
-        /* Keyframes for text effect */
         @keyframes fadeIn {
-            0% { opacity: 0; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
         }
 
         .overlay {
@@ -176,50 +205,46 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);  /* Darker overlay */
+            background: rgba(0, 0, 0, 0.157);
             z-index: 0;
         }
     </style>
 </head>
+
 <body>
 
     <div class="overlay"></div> <!-- Dark overlay -->
-    
+
     <div class="container">
-        <!-- Our Services Section -->
         <div class="services-section">
             <h2>Our Services</h2>
             <div class="services-list">
                 <div class="service-item" onclick="toggleInfo(this)">
-                    Power Automate
+                    <img src="https://www.paitgroup.com/hubfs/Power-Automate-22.png" alt="Power Automate">
                     <div class="service-info">Automate repetitive tasks and processes using Power Automate.</div>
                 </div>
                 <div class="service-item" onclick="toggleInfo(this)">
-                    Power BI
+                    <img src="https://i.pinimg.com/originals/ff/ca/de/ffcade7ea39de9b876eb76bbbd4fedb5.png" alt="Power BI">
                     <div class="service-info">Create interactive reports and dashboards with Power BI.</div>
                 </div>
                 <div class="service-item" onclick="toggleInfo(this)">
-                    Power Pages
+                    <img src="https://i0.wp.com/www.risual.com/wp-content/uploads/power-pages2x.png?fit=801%2C241&ssl=1" alt="Power Pages">
                     <div class="service-info">Build low-code websites with Power Pages.</div>
                 </div>
                 <div class="service-item" onclick="toggleInfo(this)">
-                    CoPilot Studio
+                    <img src="https://abhishekdhoriya.com/wp-content/uploads/2024/06/microsoft-Copilot-Studio-Logo.webp" alt="CoPilot Studio">
                     <div class="service-info">Create custom solutions with CoPilot Studio.</div>
                 </div>
                 <div class="service-item" onclick="toggleInfo(this)">
-                    CoPilot
-                    <div class="service-info">AI-driven assistant for various tasks and workflows.</div>
-                </div>
-                <div class="service-item" onclick="toggleInfo(this)">
-                    SharePoint
+                    <img src="https://logos-world.net/wp-content/uploads/2022/12/SharePoint-Symbol.png" alt="SharePoint">
                     <div class="service-info">Collaborate and manage documents with SharePoint.</div>
                 </div>
                 <div class="service-item" onclick="toggleInfo(this)">
-                    Dataverse
+                    <img src="https://miro.medium.com/v2/resize:fit:640/1*Fi8lJW5CTRGKLhgFP-J9Sw.png" alt="Dataverse">
                     <div class="service-info">Unified data platform to store and manage data.</div>
                 </div>
                 <div class="service-item" onclick="toggleInfo(this)">
-                    Fabric
+                    <img src="https://msfabric.pl/wp-content/uploads/2022/02/Logo-MS-Fabric-SAMO.png" alt="Fabric">
                     <div class="service-info">Data integration platform designed for enterprise use.</div>
                 </div>
             </div>
@@ -230,10 +255,10 @@
 
     <script>
         function toggleInfo(serviceItem) {
-            // Toggle the 'active' class to show or hide the service info
             serviceItem.classList.toggle('active');
         }
     </script>
 
 </body>
+
 </html>
