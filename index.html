@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Coming Soon - fluxanalytics</title>
+    <title>Coming Soon - FluxAnalytics</title>
     <style>
         /* Global Reset */
         * {
@@ -12,7 +12,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body, html {
             height: 100%;
             font-family: Arial, sans-serif;
@@ -21,7 +21,6 @@
             align-items: center;
             color: #fff;
             overflow: hidden;
-            /* Dark background with SVG */
             background-color: #000000;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg fill-opacity='0.42'%3E%3Ccircle fill='%23000000' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%2314081c' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%231c0b28' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%23230e31' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%23281038' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%232D123F' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
@@ -31,7 +30,7 @@
         /* Container Styles */
         .container {
             text-align: center;
-            z-index: 1; /* Ensure it stays above the background */
+            z-index: 1;
         }
 
         /* Image Styling */
@@ -57,13 +56,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);  /* Darker overlay */
+            background: rgba(0, 0, 0, 0.365);  /* Darker overlay */
             z-index: 0;
         }
 
         /* Button Styling */
         .about-button {
-            position: absolute;
+            position: fixed;
             bottom: 20px;
             right: 20px;
             padding: 10px 20px;
@@ -74,12 +73,75 @@
             cursor: pointer;
             font-size: 1rem;
             text-decoration: none;
-            z-index: 1; /* Ensure it stays above the overlay */
+            z-index: 1;
         }
 
         .about-button:hover {
-            /* background-color: #701a66; */
             color: white;
+        }
+
+        /* Toggle Button Styling */
+        .toggle-button {
+            position: fixed;
+            bottom: 20px;
+            right: 2%; /* Right next to the about-button */
+            padding: 10px 15px;
+            background-color: #030000;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .toggle-button:hover {
+            background-color: #701a66;
+        }
+
+        /* Full-screen Navigation Overlay */
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .nav-overlay.active {
+            display: flex;
+        }
+
+        .nav-overlay a {
+            font-size: 2rem;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px;
+            margin: 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-overlay a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-overlay .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
         }
 
         @media (max-width: 768px) {
@@ -87,22 +149,37 @@
                 font-size: 10px;
             }
         }
-
     </style>
 </head>
 <body>
 
-    <div class="overlay"></div> <!-- Dark overlay -->
-    
+    <!-- Dark Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Main Container -->
     <div class="container">
         <div class="image-container">
-            <img src="./fluxanalytic.png" alt="Startup Image">
+            <img src="./fluxanalytic.png" alt="FluxAnalytics Coming Soon">
         </div>
-        <!-- <div class="coming-soon-text">
-            <p>Coming Soon</p>
-        </div> -->
-        <a href="about.html" class="about-button">Know About Us</a>
     </div>
+
+    <!-- Toggle Button -->
+    <button class="toggle-button" onclick="toggleNav()">☰</button>
+
+    <!-- Full-Screen Navigation Overlay -->
+    <div class="nav-overlay" id="navOverlay">
+        <button class="close-btn" onclick="toggleNav()">×</button>
+        <a href="about.html">Know About Us</a>
+        <a href="service.html">Services</a>
+    </div>
+
+    <script>
+        // Toggle full-screen navigation
+        function toggleNav() {
+            const navOverlay = document.getElementById('navOverlay');
+            navOverlay.classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>

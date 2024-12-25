@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Parkinsans:wght@300..800&family=Poetsen+One&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <title>About Us - FluxAnalytics</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+            /* Dark background with SVG */
+            background-color: #000000;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg fill-opacity='0.42'%3E%3Ccircle fill='%23000000' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%2314081c' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%231c0b28' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%23230e31' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%23281038' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%232D123F' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        /* Container Styles */
+        .container {
+            text-align: left;
+            z-index: 1; /* Ensure it stays above the background */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 20px;
+        }
+
+        /* About Us Text */
+        .about-us-text {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.985);
+            font-family: 'Parkinsans', serif;
+            width: 80%;
+            margin: 0 auto;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Services Section */
+        .services-section {
+            width: 80%;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .services-section h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 20px;
+            font-family: 'Parkinsans', serif;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .service-item {
+            background-color: rgba(0, 0, 0, 0.996); /* Transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgb(0, 0, 0); /* Soft shadow effect */
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+            cursor: pointer;
+        }
+
+        .service-item:hover {
+            transform: scale(1.1);
+            background-color: rgba(35, 45, 63, 0.8); /* Solid background on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Increased shadow */
+        }
+
+        /* Info box visibility */
+        .service-info {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+
+        .service-item.active .service-info {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Button Styling */
+        .about-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #090301;
+            color: #695b5b;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            max-width: 800px;
+            font-size: 1rem;
+            text-decoration: none;
+            z-index: 1; /* Ensure it stays above the overlay */
+        }
+
+        .about-button:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .about-us-text {
+                 font-size: 1rem;
+                 color: whitesmoke;
+            }
+            .services-section h2 {
+                font-size: 1.5rem;
+            }
+            .service-item {
+                width: 100%;
+                font-size: 1rem;
+            }
+        }
+
+        /* Keyframes for text effect */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);  /* Darker overlay */
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div> <!-- Dark overlay -->
+    
+    <div class="container">
+        <!-- Our Services Section -->
+        <div class="services-section">
+            <h2>Our Services</h2>
+            <div class="services-list">
+                <div class="service-item" onclick="toggleInfo(this)">
+                    Power Automate
+                    <div class="service-info">Automate repetitive tasks and processes using Power Automate.</div>
+                </div>
+                <div class="service-item" onclick="toggleInfo(this)">
+                    Power BI
+                    <div class="service-info">Create interactive reports and dashboards with Power BI.</div>
+                </div>
+                <div class="service-item" onclick="toggleInfo(this)">
+                    Power Pages
+                    <div class="service-info">Build low-code websites with Power Pages.</div>
+                </div>
+                <div class="service-item" onclick="toggleInfo(this)">
+                    CoPilot Studio
+                    <div class="service-info">Create custom solutions with CoPilot Studio.</div>
+                </div>
+                <div class="service-item" onclick="toggleInfo(this)">
+                    CoPilot
+                    <div class="service-info">AI-driven assistant for various tasks and workflows.</div>
+                </div>
+                <div class="service-item" onclick="toggleInfo(this)">
+                    SharePoint
+                    <div class="service-info">Collaborate and manage documents with SharePoint.</div>
+                </div>
+                <div class="service-item" onclick="toggleInfo(this)">
+                    Dataverse
+                    <div class="service-info">Unified data platform to store and manage data.</div>
+                </div>
+                <div class="service-item" onclick="toggleInfo(this)">
+                    Fabric
+                    <div class="service-info">Data integration platform designed for enterprise use.</div>
+                </div>
+            </div>
+        </div>
+
+        <a href="index.html" class="about-button">Home</a>
+    </div>
+
+    <script>
+        function toggleInfo(serviceItem) {
+            // Toggle the 'active' class to show or hide the service info
+            serviceItem.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
