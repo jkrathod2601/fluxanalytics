@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Parkinsans:wght@300..800&family=Poetsen+One&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>About Us - FluxAnalytics</title>
     <style>
         /* Global Reset */
@@ -16,7 +16,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body, html {
             height: 100%;
             font-family: Arial, sans-serif;
@@ -25,7 +25,6 @@
             align-items: center;
             color: #fff;
             overflow: hidden;
-            /* Dark background with SVG */
             background-color: #000000;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg fill-opacity='0.42'%3E%3Ccircle fill='%23000000' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%2314081c' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%231c0b28' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%23230e31' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%23281038' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%232D123F' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
@@ -53,10 +52,30 @@
             font-family: 'Parkinsans', serif;
             width: 80%;
             margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
             animation: fadeIn 2s ease-in-out;
         }
 
-        /* Add darker overlay effect */
+        .word {
+            opacity: 0;
+            transform: scale(0.8);
+            animation: zoomIn 0.3s ease forwards;
+        }
+
+        @keyframes zoomIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Darker overlay */
         .overlay {
             position: absolute;
             top: 0;
@@ -71,7 +90,7 @@
         .about-button {
             position: absolute;
             bottom: 20px;
-            right: 20px;
+            left: 20px; /* Position the button on the left */
             padding: 10px 20px;
             background-color: #090301;
             color: #695b5b;
@@ -82,6 +101,12 @@
             font-size: 1rem;
             text-decoration: none;
             z-index: 1; /* Ensure it stays above the overlay */
+            display: flex;
+            align-items: center;
+        }
+
+        .about-button i {
+            margin-right: 8px; /* Space between the icon and text */
         }
 
         .about-button:hover {
@@ -95,26 +120,43 @@
             }
         }
 
-        /* Keyframes for text effect */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
     </style>
 </head>
 <body>
 
     <div class="overlay"></div> <!-- Dark overlay -->
-    
+
     <div class="container">
-        <div class="about-us-text">
-            <p>Welcome to FluxAnalytics! We are dedicated to providing cutting-edge analytics solutions to help businesses thrive in the digital age. We specialize in innovative data solutions, real-time data processing, and comprehensive market analysis. Our expert team of analysts delivers customized business insights to drive your success.</p>
-            <p>We are also pioneers in the Power Platform, offering no-code/low-code platform as a service to empower businesses with seamless and efficient solutions. Join us on a journey of transformation and growth!</p>
+        <div class="about-us-text" id="aboutUsText">
+            <p>Welcome to FluxAnalytics! We are dedicated to providing cutting-edge analytics solutions to help businesses thrive in the digital age. We specialize in innovative data solutions, real-time data processing, and comprehensive market analysis. Our expert team of analysts delivers customized business insights to drive your success.We are also pioneers in the Power Platform, offering no-code/low-code platform as a service to empower businesses with seamless and efficient solutions. Join us on a journey of transformation and growth!</p>
+           
         </div>
-        <a href="index.html" class="about-button">Home</a>
+
+        <!-- Back Button with arrow icon and text -->
+        <a href="index.html" class="about-button"><i class="fas fa-arrow-left"></i>Back</a> <!-- Back arrow icon -->
+
     </div>
+
+    <script>
+        // Split text into words and apply animation to each word
+        function animateText() {
+            const aboutText = document.querySelectorAll(".about-us-text p");
+            aboutText.forEach(paragraph => {
+                const words = paragraph.innerText.split(" ");
+                paragraph.innerHTML = ""; // Clear the existing text
+                words.forEach((word, index) => {
+                    const span = document.createElement("span");
+                    span.classList.add("word");
+                    span.style.animationDelay = `${index * 0.1}s`;  // Delay each word by 0.3s
+                    span.innerText = word + " ";
+                    paragraph.appendChild(span);
+                });
+            });
+        }
+
+        // Call the function to animate text
+        window.onload = animateText;
+    </script>
 
 </body>
 </html>
