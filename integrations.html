@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="fa.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Parkinsans:wght@300..800&family=Poetsen+One&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for the Back Button Icon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <title>Integrations - FluxAnalytics</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+            background-color: #000000;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 800 800'%3E%3Cg fill-opacity='0.42'%3E%3Ccircle fill='%23000000' cx='400' cy='400' r='600'/%3E%3Ccircle fill='%2314081c' cx='400' cy='400' r='500'/%3E%3Ccircle fill='%231c0b28' cx='400' cy='400' r='400'/%3E%3Ccircle fill='%23230e31' cx='400' cy='400' r='300'/%3E%3Ccircle fill='%23281038' cx='400' cy='400' r='200'/%3E%3Ccircle fill='%232D123F' cx='400' cy='400' r='100'/%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+            width: 100%;
+            height: auto;
+        }
+
+        .integration-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.985);
+            font-family: 'Parkinsans', serif;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .integration-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            justify-items: center;
+            margin-top: 30px;
+        }
+
+        .integration-card {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgb(0, 0, 0);
+            backdrop-filter: blur(5px);
+            text-align: left;
+            width: 100%;
+            max-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .integration-card img {
+            width: 50px;
+            margin-bottom: 15px;
+        }
+
+        .integration-card h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            color: rgb(210, 176, 222);
+        }
+
+        .integration-card p {
+            color: #fff;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 10px;
+        }
+
+        .back-to-home {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #090301;
+            color: #695b5b;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            max-width: 800px;
+            font-size: 1rem;
+            text-decoration: none;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-home i {
+            margin-right: 8px;
+        }
+
+        .back-to-home:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .integration-title {
+                font-size: 1.5rem;
+            }
+
+            .integration-cards {
+                width: 90%;
+            }
+
+            .integration-card {
+                padding: 15px;
+            }
+
+            .integration-card h3 {
+                font-size: 1.25rem;
+            }
+
+            .integration-card p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .integration-title {
+                font-size: 1.3rem;
+            }
+
+            .integration-card {
+                padding: 12px;
+            }
+
+            .integration-card h3 {
+                font-size: 1.2rem;
+            }
+
+            .integration-card p {
+                font-size: 0.85rem;
+            }
+
+            .back-to-home {
+                font-size: 0.9rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="container">
+        <div class="integration-title">
+            Integrations with Power Apps
+        </div>
+
+        <div class="integration-cards" id="integrationCards">
+            <!-- Integration Cards will be dynamically injected here -->
+        </div>
+    </div>
+
+    <a href="index.html" class="back-to-home"><i class="fas fa-arrow-left"></i>Back</a>
+
+    <script>
+        // JavaScript object to define integrations
+        const integrations = [
+            {
+                title: "SAP",
+                description: "Connect SAP ERP systems with Power Apps for efficient business process automation and data flow management.",
+                image: "https://example.com/sap.png"
+            },
+            {
+                title: "ServiceNow",
+                description: "Integrate IT service management tasks, incidents, and workflows for enhanced support using Power Apps.",
+                image: "https://example.com/servicenow.png"
+            },
+            {
+                title: "CRM Systems",
+                description: "Integrate CRM solutions to improve customer relationship management and data analysis.",
+                image: "https://example.com/crm.png"
+            },
+            {
+                title: "Marketing Platforms",
+                description: "Connect marketing tools like Mailchimp and HubSpot to manage campaigns and gather insights.",
+                image: "https://example.com/marketing.png"
+            },
+            {
+                title: "E-commerce Platforms",
+                description: "Integrate Shopify, Magento, WooCommerce, and more for seamless order and customer management.",
+                image: "https://example.com/ecommerce.png"
+            },
+            {
+                title: "Communication Tools",
+                description: "Integrate communication platforms like Slack, Microsoft Teams, and Zoom to streamline collaboration.",
+                image: "https://example.com/communication.png"
+            },
+            {
+                title: "Accounting & Financial Tools",
+                description: "Integrate accounting software like QuickBooks, Xero, and FreshBooks for seamless financial management.",
+                image: "https://example.com/accounting.png"
+            },
+            {
+                title: "Cloud Storage Solutions",
+                description: "Connect cloud storage services like Google Drive, Dropbox, and OneDrive for better document management.",
+                image: "https://example.com/cloud-storage.png"
+            },
+            {
+                title: "Payment Gateways",
+                description: "Integrate payment gateways like Stripe, PayPal, and Square for seamless online transactions.",
+                image: "https://example.com/payment.png"
+            },
+            {
+                title: "HR & Workforce Management Tools",
+                description: "Integrate HR software like Workday, BambooHR, and ADP for better workforce management.",
+                image: "https://example.com/hr.png"
+            },
+            {
+                title: "Customer Support & Help Desk Platforms",
+                description: "Integrate customer support tools like Zendesk and Freshdesk for efficient customer service.",
+                image: "https://example.com/support.png"
+            },
+            {
+                title: "Document Management Systems",
+                description: "Integrate document management systems for better control over your documents and workflows.",
+                image: "https://example.com/documents.png"
+            },
+            {
+                title: "Social Media Platforms",
+                description: "Integrate platforms like Facebook, Twitter, and LinkedIn for social media campaign management.",
+                image: "https://example.com/social-media.png"
+            },
+            {
+                title: "Project Management Tools",
+                description: "Integrate tools like Trello, Asana, and Jira for efficient project tracking and collaboration.",
+                image: "https://example.com/project-management.png"
+            },
+            {
+                title: "Data and Analytics Tools",
+                description: "Integrate tools like Power BI, Tableau, and Google Analytics to enhance data-driven decision-making.",
+                image: "https://example.com/data-analytics.png"
+            },
+        ];
+
+        // Function to create and display the integration cards
+        function createIntegrationCards() {
+            const cardsContainer = document.getElementById("integrationCards");
+
+            integrations.forEach(integration => {
+                const card = document.createElement("div");
+                card.classList.add("integration-card");
+
+                card.innerHTML = `
+                    
+                    <h3>${integration.title}</h3>
+                    <p>${integration.description}</p>
+                `;
+                
+                cardsContainer.appendChild(card);
+            });
+        }
+
+        // Call the function to create the integration cards on page load
+        createIntegrationCards();
+    </script>
+
+</body>
+
+</html>
